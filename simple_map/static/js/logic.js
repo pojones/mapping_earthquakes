@@ -50,6 +50,7 @@ streets.addTo(map);
 // general format for referencing a spot on the map, adjust as necessary:
 // var marker = L.marker([51.5, -0.09]).addTo(map);
 
+/*
 //  Add a marker to the map for Los Angeles, California.
 let marker = L.marker([34.0522, -118.2437]).addTo(map);
 
@@ -62,5 +63,20 @@ L.circleMarker([37.7749, -122.4194]).addTo(map);
 L.circleMarker([40.7128, -74.0060],{
   radius: 300,
   color: "black",
-  fillcolor: "yellow"
+  fillcolor: '#ffffal'
 }).addTo(map);
+*/
+
+// Loop through the cities array and create one marker for each city.
+cities.forEach(function(city) {
+  console.log(city)
+  L.circleMarker(city.location, {
+    radius: city.population/100000
+  })
+  .bindPopup("<h2>" + city.city + ", " + city.state + "</h2> <hr> <h3>Population " + city.population.toLocaleString() + "</h3>")
+  .addTo(map);
+ });
+ 
+
+ // Get data from cities.js
+let cityData = cities;
